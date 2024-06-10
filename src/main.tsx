@@ -10,9 +10,7 @@ import { palette } from './styles/palette';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <ThemeProvider theme={palette}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <App />
     </ThemeProvider>
   </BrowserRouter>
 )

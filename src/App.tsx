@@ -1,10 +1,31 @@
 import './App.css'
 import Logo from './assets/logo1.png'
 import LogoIcc from "./assets/logoicc.png"
+import { saveData } from "./helpers/Utillities";
+import { IUtillities } from "./helpers/IUtillities";
+import { ChangeEvent, useState } from 'react';
+interface IUserRegister {
+  Nombre: string;
+  Telefono: string;
+  Nivel: string;
+}
 
 function App() {
-
-
+  const utilities: IUtillities = { url: '' }
+  const [formData, updateFormData] = useState<IUserRegister>({});
+  const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
+    updateFormData({ ...formData, [prop]: event.target.value });
+  };
+  const handleSelectChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLSelectElement>) => {
+    updateFormData({ ...formData, [prop]: event.target.value });
+  };
+  const handleSubmit = async (userAccount: IUserRegister) => {
+    utilities.url = '/registros';
+    utilities.data = userAccount;
+    console.log(formData, utilities)
+    const result = await saveData(utilities);
+    console.log(result)
+  }
   return (
     <>
       <h1 className="text-center p-3">TECNOFEST</h1>
@@ -33,24 +54,22 @@ function App() {
                         <div className="card-body-registro">
                           <h1 className='h1-registro'>Inscríbete</h1>
                           <img src={LogoIcc} alt="Logo UNICAH" className="logo-registro" />
-                          <form id="registroForm" action="/add" method="post">
-                            <div className="form-group-registro">
-                              <input type="text" id="nombre" name="name" placeholder="Nombre Completo" className="form-control-registro" />
-                            </div>
-                            <div className="form-group-registro">
-                              <input type="text" id="telefono" name="phone" placeholder="Número de celular" className="form-control-registro" />
-                            </div>
-                            <div className="form-group-registro">
-                              <select id="nivel_participante" name="level" className="form-control-registro">
-                                <option value="" disabled selected>Seleccionar una opción</option>
-                                <option value="Superior">Superior</option>
-                                <option value="Media">Media</option>
-                              </select>
-                            </div>
-                            <div className="form-group-registro text-center">
-                              <button type="submit" className="btn btn-primary-registro">Guardar</button>
-                            </div>
-                          </form>
+                          <div className="form-group-registro">
+                            <input type="text" id="nombre" name="name" placeholder="Nombre Completo" className="form-control-registro" onChange={handleChange('Nombre')} />
+                          </div>
+                          <div className="form-group-registro">
+                            <input type="text" id="telefono" name="phone" placeholder="Número de celular" className="form-control-registro" onChange={handleChange('Telefono')} />
+                          </div>
+                          <div className="form-group-registro">
+                            <select onChange={handleSelectChange('Nivel')} id="nivel_participante" name="level" className="form-control-registro">
+                              <option value="" disabled selected>Seleccionar una opción</option>
+                              <option value="Superior">Superior</option>
+                              <option value="Media">Media</option>
+                            </select>
+                          </div>
+                          <div className="form-group-registro text-center">
+                            <button onClick={() => handleSubmit(formData)} className="btn btn-primary-registro">Guardar</button>
+                          </div>
                         </div>
                       </div>
                     </div>
