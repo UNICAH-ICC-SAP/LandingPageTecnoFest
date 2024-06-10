@@ -54,7 +54,6 @@ function App() {
                         <div className="card-body-registro">
                           <h1 className='h1-registro'>Inscríbete</h1>
                           <img src={LogoIcc} alt="Logo UNICAH" className="logo-registro" />
-<<<<<<< HEAD
                           <div className="form-group-registro">
                             <input type="text" id="nombre" name="name" placeholder="Nombre Completo" className="form-control-registro" onChange={handleChange('Nombre')} />
                           </div>
@@ -71,26 +70,6 @@ function App() {
                           <div className="form-group-registro text-center">
                             <button onClick={() => handleSubmit(formData)} className="btn btn-primary-registro">Guardar</button>
                           </div>
-=======
-                          <form id="registroForm" action="/add" method="post">
-                            <div className="form-group-registro">
-                              <input type="text" id="nombre" name="name" placeholder="Nombre Completo" className="form-control-registro" />
-                            </div>
-                            <div className="form-group-registro">
-                              <input type="text" id="telefono" name="phone" placeholder="Número de celular" className="form-control-registro" />
-                            </div>
-                            <div className="form-group-registro">
-                              <select id="nivel_participante" name="level" className="form-control-registro">
-                                <option value="" disabled selected>Seleccionar una opción</option>
-                                <option value="Superior">Superior</option>
-                                <option value="Media">Media</option>
-                              </select>
-                            </div>
-                            <div className="form-group-registro text-center">
-                              <button type="submit" className="btn btn-primary-registro">Guardar</button>
-                            </div>
-                          </form>
->>>>>>> 990a7d0e6d7c6859bab6fb3f0cd51d88c577e1b5
                         </div>
                       </div>
                     </div>

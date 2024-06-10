@@ -1,4 +1,4 @@
-import { IUtillities } from "../helpers/IUtillities";
+import { IUtillities } from "./IUtillities";
 import axios from "axios";
 import { config } from "../axiosConfig/axiosConfig";
 import { isEmpty } from "lodash";
