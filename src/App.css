@@ -54,6 +54,8 @@
   z-index: 0;
 }
 
+
+
 .container-registro {
   position: relative;
   z-index: 2;
@@ -63,7 +65,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-right: 60%;
+  /* margin-right: 60%; */
 }
 
 .h1-registro {
@@ -80,6 +82,17 @@
   height: 150px;
 }
 
+@media only screen and (min-width: 320px) {
+  .logo-registro {
+    width: 140px;
+    height: 110px;
+  }
+
+  .h1-registro {
+    font-size: 1.8em;
+  }
+}
+
 .form-group-registro {
   margin-bottom: 15px;
 }
@@ -92,6 +105,18 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: #ccc;
+  color: #000;
+}
+
+.temas {
+  height: fit-content;
+  min-height: 250px;
+}
+
+.tema-title {
+  min-height: 50px;
+  width: 100%;
 }
 
 .btn-primary-registro {
