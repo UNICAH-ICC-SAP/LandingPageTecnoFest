@@ -12,7 +12,7 @@ interface IUserRegister {
 
 function App() {
   const utilities: IUtillities = { url: '' }
-  const [formData, updateFormData] = useState<IUserRegister>({});
+  const [formData, updateFormData] = useState<IUserRegister>({ Nombre: "", Telefono: "", Nivel: "" });
   const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
     updateFormData({ ...formData, [prop]: event.target.value });
   };
