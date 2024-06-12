@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 
 const baseUrl = {
     dev: 'http://51.161.13.38:3000/api',
-    prod: 'https://apitecnofest.onrender.com'
+    prod: 'https://apitecnofest.onrender.com/api'
 }
 
 const config: AxiosRequestConfig = {
