@@ -4,7 +4,8 @@ import LogoIcc from "./assets/logoicc.png"
 import { saveData } from "./helpers/Utillities";
 import { IUtillities } from "./helpers/IUtillities";
 import { ChangeEvent, useState } from 'react';
-import { Toast, ToastHeader, ToastBody } from 'react-bootstrap';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+
 interface IUserRegister {
   Nombre: string;
   Telefono: string;
@@ -13,8 +14,9 @@ interface IUserRegister {
 
 function App() {
   const utilities: IUtillities = { url: '' }
+  const [onRedirect, setOnRedirect] = useState<boolean>(false)
   const [formData, updateFormData] = useState<IUserRegister>({ Nombre: "", Telefono: "", Nivel: "" });
-  const [saved, setSaved] = useState<boolean>(false);
+  // const [saved, setSaved] = useState<boolean>(false);
   const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
     updateFormData({ ...formData, [prop]: event.target.value });
   };
@@ -26,9 +28,16 @@ function App() {
     utilities.data = userAccount;
     const result = await saveData(utilities);
     if (result === 200) {
-      setSaved(true);
+      toast.success('🦄 Usted se ha suscrito al evento!', {
+        position: "top-right",
+        transition: Bounce,
+        onClose: () => setOnRedirect(true)
+      })
+    } else {
+      toast.error("Sucedio un error al suscribirse, contacte a soporte.")
     }
   }
+  // setTimeout(function () { setSaved(false) }, 3600)
   return (
     <>
       <h1 className="text-center p-3">TECNOFEST</h1>
@@ -36,7 +45,7 @@ function App() {
         <img src={Logo} alt="Logo del Evento" style={{ width: "300px", height: "auto" }} />
       </div>
 
-      <div className="container">
+      {!onRedirect ? <div className="container">
         <div className="row mb-3">
           <div className="col-12 text-center">
             <h2>Bienvenidos a TECNOFEST 2024</h2>
@@ -58,16 +67,17 @@ function App() {
                           <h1 className='h1-registro'>Inscríbete</h1>
                           <img src={LogoIcc} alt="Logo UNICAH" className="logo-registro" />
                           <div className="form-group-registro">
-                            <input type="text" id="nombre" name="name" placeholder="Nombre Completo" className="form-control-registro" onChange={handleChange('Nombre')} />
+                            <input type="name" id="nombre" name="name" placeholder="Nombre Completo" className="form-control-registro" onChange={handleChange('Nombre')} />
                           </div>
                           <div className="form-group-registro">
-                            <input type="text" id="telefono" name="phone" placeholder="Número de celular" className="form-control-registro" onChange={handleChange('Telefono')} />
+                            <input type="number" id="telefono" name="phone" placeholder="Número de celular" className="form-control-registro" onChange={handleChange('Telefono')} />
                           </div>
                           <div className="form-group-registro">
                             <select onChange={handleSelectChange('Nivel')} id="nivel_participante" name="level" className="form-control-registro">
                               <option value="" disabled selected>Seleccionar una opción</option>
                               <option value="Superior">Superior</option>
                               <option value="Media">Media</option>
+                              <option value="Ex-Alumno">Ex-Alumno</option>
                             </select>
                           </div>
                           <div className="form-group-registro text-center">
@@ -78,6 +88,7 @@ function App() {
                     </div>
                   </div>
                 </div>
+                <ToastContainer theme="dark" transition={Bounce} />
               </div>
               <div className="col-md-12 col-lg-6 justify-content-between">
                 <div className="col-md-12">
@@ -154,15 +165,7 @@ function App() {
             </div>
           </div>
         </div>
-        {saved && <Toast>
-          <ToastHeader>
-            Informacion de registro
-          </ToastHeader>
-          <ToastBody>
-            Usted esta registrado al evento.
-          </ToastBody>
-        </Toast>}
-      </div >
+      </div > : <>Redirigido</>}
     </>
   )
 }
