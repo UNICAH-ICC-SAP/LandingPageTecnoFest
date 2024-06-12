@@ -4,6 +4,7 @@ import LogoIcc from "./assets/logoicc.png"
 import { saveData } from "./helpers/Utillities";
 import { IUtillities } from "./helpers/IUtillities";
 import { ChangeEvent, useState } from 'react';
+import { Toast, ToastHeader, ToastBody } from 'react-bootstrap';
 interface IUserRegister {
   Nombre: string;
   Telefono: string;
@@ -13,6 +14,7 @@ interface IUserRegister {
 function App() {
   const utilities: IUtillities = { url: '' }
   const [formData, updateFormData] = useState<IUserRegister>({ Nombre: "", Telefono: "", Nivel: "" });
+  const [saved, setSaved] = useState<boolean>(false);
   const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
     updateFormData({ ...formData, [prop]: event.target.value });
   };
@@ -22,9 +24,10 @@ function App() {
   const handleSubmit = async (userAccount: IUserRegister) => {
     utilities.url = '/registros';
     utilities.data = userAccount;
-    console.log(formData, utilities)
     const result = await saveData(utilities);
-    console.log(result)
+    if (result === 200) {
+      setSaved(true);
+    }
   }
   return (
     <>
@@ -151,6 +154,14 @@ function App() {
             </div>
           </div>
         </div>
+        {saved && <Toast>
+          <ToastHeader>
+            Informacion de registro
+          </ToastHeader>
+          <ToastBody>
+            Usted esta registrado al evento.
+          </ToastBody>
+        </Toast>}
       </div >
     </>
   )
