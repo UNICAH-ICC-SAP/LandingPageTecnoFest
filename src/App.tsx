@@ -114,7 +114,7 @@ function App() {
                     <div className="card-body text-center">
                       <i className="fa-solid fa-clock fa-2x"></i>
                       <h4><strong>Horarios:</strong></h4>
-                      <h5>9:00 AM - 6:00 PM</h5>
+                      <h5>9:00 AM - 3:00 PM</h5>
                     </div>
                   </div>
                 </div>
