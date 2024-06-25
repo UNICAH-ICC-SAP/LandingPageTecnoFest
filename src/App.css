@@ -64,6 +64,20 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.fondo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('./assets/unicah.jpg');
+  width: 1240px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+
+}
+
+
 .container-registro {
   position: relative;
   z-index: 2;
@@ -99,6 +113,21 @@ input[type=number] {
   .h1-registro {
     font-size: 1.8em;
   }
+
+}
+
+@media only screen and (max-width: 720px) {
+  .fondo {
+    width: 320px;
+    height: 550px;
+  }
+}
+
+@media only screen and (max-width: 720px) and (orientation: landscape) {
+  .fondo {
+    width: 120px;
+    height: 550px;
+  }
 }
 
 .form-group-registro {
@@ -123,7 +152,7 @@ input[type=number] {
 }
 
 .tema-title {
-  min-height: 50px;
+  min-height: 70px;
   width: 100%;
 }
 

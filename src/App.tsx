@@ -14,7 +14,7 @@ interface IUserRegister {
 
 function App() {
   const utilities: IUtillities = { url: '' }
-  const [onRedirect, setOnRedirect] = useState<boolean>(false)
+  const [onRedirect, setOnRedirect] = useState<boolean>(true)
   const [formData, updateFormData] = useState<IUserRegister>({ Nombre: "", Telefono: "", Nivel: "" });
   // const [saved, setSaved] = useState<boolean>(false);
   const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,12 +40,12 @@ function App() {
   // setTimeout(function () { setSaved(false) }, 3600)
   return (
     <>
-      <h1 className="text-center p-3">TECNOFEST</h1>
-      <div className="text-center">
-        <img src={Logo} alt="Logo del Evento" style={{ width: "300px", height: "auto" }} />
-      </div>
 
       {!onRedirect ? <div className="container">
+        <h1 className="text-center p-3">TECNOFEST</h1>
+        <div className="text-center">
+          <img src={Logo} alt="Logo del Evento" style={{ width: "300px", height: "auto" }} />
+        </div>
         <div className="row mb-3">
           <div className="col-12 text-center">
             <h2>Bienvenidos a TECNOFEST 2024</h2>
@@ -129,9 +129,9 @@ function App() {
                 <div className="p-0 card mb-3 me-3" style={{ flex: 1 }}>
                   <div className="card-body text-center temas">
                     <i className="fa-solid fa-shield-halved fa-2x"></i>
-                    <h5 className='mb-1 tema-title'><strong>Protección de Datos:</strong></h5>
+                    <h5 className='mb-3 tema-title pt-4'><strong>Datacenters Híbridos:</strong></h5>
                     <div>
-                      Prácticas y tecnologías para asegurar la información personal y sensible contra accesos no autorizados, uso indebido y pérdida. Incluye cifrado, control de acceso y cumplimiento normativo.</div>
+                      Descubre cómo los datacenters híbridos combinan la infraestructura local y la nube para ofrecer flexibilidad, escalabilidad y seguridad, revolucionando la gestión de datos empresariales.</div>
                   </div>
                 </div>
               </div>
@@ -139,8 +139,8 @@ function App() {
                 <div className="p-0 card mb-3 me-3" style={{ flex: 1 }}>
                   <div className="card-body text-center temas">
                     <i className="fa-solid fa-user-shield fa-2x"></i>
-                    <h5 className='mb-1 tema-title'><strong>Seguridad en Redes:</strong></h5>
-                    <div>Proteger la integridad, confidencialidad y disponibilidad de la información transmitida por redes de computadoras. Incluye firewalls, sistemas de detección de intrusos (IDS) y segmentación de redes.</div>
+                    <h5 className='mb-3 tema-title'><strong>Tendencias Emergentes en Tecnología y su Impacto en el Futuro del Trabajo:</strong></h5>
+                    <div>Explora cómo la inteligencia artificial, el blockchain, la automatización y el IoT están transformando el entorno laboral y cómo puedes prepararte para adaptarte y prosperar en el futuro del trabajo.</div>
                   </div>
                 </div>
               </div>
@@ -148,24 +148,62 @@ function App() {
                 <div className="p-0 card mb-3 me-3" style={{ flex: 1 }}>
                   <div className="card-body text-center temas">
                     <i className="fa-solid fa-lock fa-2x"></i>
-                    <h5 className='mb-1 tema-title'><strong>Autenticación y Autorización:</strong></h5>
-                    <div>Procesos para verificar la identidad del usuario y determinar sus permisos de acceso a los recursos. Incluye contraseñas, biometría y niveles de acceso basados en roles.</div>
+                    <h5 className='mb-3 tema-title'><strong>Tu Camino en el Desarrollo de Software: Lo Que Viene Después de la Universidad:</strong></h5>
+                    <div>Conoce las diversas rutas profesionales que puedes tomar después de graduarte en desarrollo de software, desde trabajar en startups hasta grandes empresas, y aprende a avanzar en tu carrera y dominar nuevas habilidades.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-12 mt-4">
+            <h3 className="text-center mb-3">Expositores</h3>
+            <div className="row justify-content-between">
+              <div className="col-md-12 col-lg-3 px-0">
+                <div className="p-0 card mb-3 me-3" style={{ flex: 1 }}>
+                  <div className="card-body text-center temas">
+                    <i className="fa-solid fa-shield-halved fa-2x"></i>
+                    <h5 className='mb-1 tema-title'><strong>Ing. Victor Hugo Almendares</strong></h5>
+                    <div>
+                      <p className='mb-0 w-100'>Gerente de TI Operaciones</p>
+                      <p className='mb-0 w-100'>Banco Davivienda</p>
+                      <p className='mb-0 w-100'>Tema: Datacenters Hibridos</p></div>
                   </div>
                 </div>
               </div>
               <div className="col-md-12 col-lg-3 px-0">
-                <div className="p-0 card mb-3" style={{ flex: 1 }}>
+                <div className="p-0 card mb-3 me-3" style={{ flex: 1 }}>
                   <div className="card-body text-center temas">
-                    <i className="fa-solid fa-virus fa-2x"></i>
-                    <h5 className='mb-1 tema-title'><strong>Defensa contra Malware:</strong></h5>
-                    <div>Estrategias y tecnologías para detectar, prevenir y eliminar software malicioso. Incluye antivirus, actualizaciones de software y educación de usuarios.</div>
+                    <i className="fa-solid fa-user-shield fa-2x"></i>
+                    <h5 className='mb-1 tema-title'><strong>Ing. Heber Orlando Galindo</strong></h5>
+                    <div>
+                      <p className='mb-0 w-100'>Lider Tecnico Desarrollo</p>
+                      <p className='mb-0 w-100'>Banco Davivienda</p>
+                      <p className='mb-0 w-100'>Tema: Tendencias Emergentes en Tecnologia y su Impacto en el Futuro del Trabajo</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-12 col-lg-3 px-0">
+                <div className="p-0 card mb-3 me-3" style={{ flex: 1 }}>
+                  <div className="card-body text-center temas">
+                    <i className="fa-solid fa-lock fa-2x"></i>
+                    <h5 className='mb-1 tema-title'><strong>Ing. Arles Arnulfo Huete</strong></h5>
+                    <div>
+                      <p className='mb-0 w-100'>Desarrollador</p>
+                      <p className='mb-0 w-100'>Quid Solutions</p>
+                      <p className='mb-0 w-100'>Tema: Tu Camino en el Desarrollo de Software: Lo que Viene despues de la Universidad</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div > : <>Redirigido</>}
+      </div > : <div className="row justify-content-center fondo"><h1 className="text-center p-3">TECNOFEST</h1>
+        <div className="text-center">
+          <img src={Logo} alt="Logo del Evento" style={{ width: "300px", height: "auto" }} />
+        </div>
+      </div>}
     </>
   )
 }
