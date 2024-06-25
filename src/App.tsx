@@ -5,6 +5,7 @@ import { saveData } from "./helpers/Utillities";
 import { IUtillities } from "./helpers/IUtillities";
 import { ChangeEvent, useState } from 'react';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { Spinner } from 'react-bootstrap';
 
 interface IUserRegister {
   Nombre: string;
@@ -15,6 +16,7 @@ interface IUserRegister {
 function App() {
   const utilities: IUtillities = { url: '' }
   const [onRedirect, setOnRedirect] = useState<boolean>(false)
+  const [processing, setProcessing] = useState<boolean>(false)
   const [formData, updateFormData] = useState<IUserRegister>({ Nombre: "", Telefono: "", Nivel: "" });
   // const [saved, setSaved] = useState<boolean>(false);
   const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +28,7 @@ function App() {
   const handleSubmit = async (userAccount: IUserRegister) => {
     utilities.url = '/registros';
     utilities.data = userAccount;
+    setProcessing(true)
     const result = await saveData(utilities);
     if (result === 200) {
       toast.success('🦄 Usted se ha suscrito al evento!', {
@@ -81,7 +84,8 @@ function App() {
                             </select>
                           </div>
                           <div className="form-group-registro text-center">
-                            <button onClick={() => handleSubmit(formData)} className="btn btn-primary-registro">Guardar</button>
+                            <button onClick={() => handleSubmit(formData)} className="btn btn-primary-registro" disabled={processing}>
+                              {processing ? <Spinner size="sm" /> : <>Guardar</>}</button>
                           </div>
                         </div>
                       </div>
