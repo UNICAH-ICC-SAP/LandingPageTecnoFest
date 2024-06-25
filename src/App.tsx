@@ -14,7 +14,7 @@ interface IUserRegister {
 
 function App() {
   const utilities: IUtillities = { url: '' }
-  const [onRedirect, setOnRedirect] = useState<boolean>(true)
+  const [onRedirect, setOnRedirect] = useState<boolean>(false)
   const [formData, updateFormData] = useState<IUserRegister>({ Nombre: "", Telefono: "", Nivel: "" });
   // const [saved, setSaved] = useState<boolean>(false);
   const handleChange = (prop: keyof IUserRegister) => (event: ChangeEvent<HTMLInputElement>) => {
